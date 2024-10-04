@@ -1,5 +1,6 @@
 import time
 from src.support_trivia import Trivia
+from src.support_tres import Tictactoe
 from os import system
 
 with open("questions.txt", encoding = "UTF-8") as archivo:
@@ -18,7 +19,7 @@ __  ___ _____  _   _  _   _     ______ ______  _____  _   _  _____  _____ ______
 
 class juegos:
     def __init__(self):
-        self.lista_juegos = [Trivia(trivia_text), 0, 0, 0, 0]
+        self.lista_juegos = [Trivia(trivia_text), Tictactoe(), 0, 0, 0]
     
     def jugar(self):
         _ = system("cls")

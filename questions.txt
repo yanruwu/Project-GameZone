@@ -18,53 +18,53 @@
 ¿En qué continente se encuentra Egipto?%África%Asia%Europa%América%
 ¿Qué unidad se usa para medir la frecuencia?%Hertz%Watts%Joules%Amperios%
 ¿Cuál es el deporte más popular del mundo?%Fútbol%Baloncesto%Críquet%Tenis%
-¿Qué tipo de animal es un delfín?%Mamífero%Pez%Anfibio%Reptil
-¿Cuál es el país más grande del mundo por superficie?%Rusia%Canadá%China%Estados Unidos
-¿Quién fue el autor de "Don Quijote de la Mancha"?%Miguel de Cervantes%Federico García Lorca%Gustavo Adolfo Bécquer%Jorge Luis Borges
-¿Cuál es el metal más ligero?%Litio%Plata%Aluminio%Oro
-¿Cuál es el sistema operativo más utilizado en el mundo?%Windows%macOS%Linux%Android
-¿Qué continente es también un país?%Australia%Antártida%África%Europa
-¿Quién descubrió la penicilina?%Alexander Fleming%Marie Curie%Louis Pasteur%Isaac Newton
-¿Cuántos lados tiene un hexágono?%Seis%Cinco%Siete%Ocho
-¿En qué año comenzó la Segunda Guerra Mundial?%1939%1914%1945%1929
-¿Quién pintó "La Última Cena"?%Leonardo da Vinci%Michelangelo%Rafael%Rembrandt
-¿Cuál es el país con más habitantes del mundo?%China%India%Estados Unidos%Indonesia
-¿En qué ciudad se encuentra la Torre Eiffel?%París%Londres%Roma%Berlín
-¿Qué gas es esencial para la respiración humana?%Oxígeno%Nitrógeno%Dióxido de carbono%Hidrógeno
-¿Cuál es el nombre del satélite natural de la Tierra?%Luna%Fobos%Deimos%Io
-¿Quién es el autor de la teoría de la relatividad?%Albert Einstein%Isaac Newton%Galileo Galilei%Nikola Tesla
-¿Cuál es la capital de Argentina?%Buenos Aires%Santiago%Lima%Montevideo
-¿Qué animal es conocido como el "rey de la selva"?%León%Tigre%Elefante%Jirafa
-¿En qué país se originó el tango?%Argentina%Brasil%España%México
-¿Qué planeta es conocido como el planeta rojo?%Marte%Venus%Mercurio%Júpiter
-¿Quién escribió "Romeo y Julieta"?%William Shakespeare%Charles Dickens%Homer%J.R.R. Tolkien
-¿Cuál es el elemento más abundante en el universo?%Hidrógeno%Oxígeno%Helio%Carbono
-¿Cuál es la ciudad más poblada del mundo?%Tokio%Nueva York%Pekín%Londres
-¿Cuál es la distancia aproximada entre la Tierra y el Sol?%150 millones de kilómetros%300 millones de kilómetros%50 millones de kilómetros%1 millón de kilómetros
-¿En qué año llegó el hombre a la Luna?%1969%1955%1975%1980
-¿Quién es el dios del trueno en la mitología nórdica?%Thor%Zeus%Ares%Odin
-¿Qué país es famoso por la Torre de Pisa?%Italia%Francia%España%Grecia
-¿Qué instrumento musical tiene teclas blancas y negras?%Piano%Guitarra%Violin%Batería
-¿Cuál es el océano que separa América de Europa?%Atlántico%Pacífico%Índico%Ártico
-¿Qué país tiene el himno nacional "La Marsellesa"?%Francia%Italia%España%Portugal
-¿En qué continente se encuentra Brasil?%América del Sur%América del Norte%Europa%África
-¿Cuál es el metal más abundante en la Tierra?%Aluminio%Hierro%Cobre%Plata
-¿Qué planeta tiene un sistema de anillos?%Saturno%Marte%Venus%Mercurio
-¿Cuál es el principal gas en la atmósfera de Marte?%Dióxido de carbono%Oxígeno%Nitrógeno%Helio
-¿En qué año fue derribado el Muro de Berlín?%1989%1979%1999%1969
-¿Quién escribió "La Odisea"?%Homero%Sófocles%Virgilio%Eurípides
-¿Cuál es el símbolo químico del oro?%Au%Ag%Fe%Pb
-¿Qué deporte practicaba Michael Jordan?%Baloncesto%Fútbol%Béisbol%Tenis
-¿Qué órgano del cuerpo humano filtra la sangre?%Riñones%Pulmones%Estómago%Corazón
-¿Cuál es el país más pequeño del mundo?%Ciudad del Vaticano%Mónaco%San Marino%Malta
-¿Qué instrumento mide los terremotos?%Sismógrafo%Barómetro%Termómetro%Altímetro
-¿Quién es el padre de la computación moderna?%Alan Turing%Charles Babbage%Steve Jobs%Bill Gates
-¿En qué país se encuentra la Gran Muralla?%China%Japón%Corea del Sur%India
-¿Qué vitamina es producida por el cuerpo al exponerse al sol?%Vitamina D%Vitamina C%Vitamina A%Vitamina B12
-¿Quién fue el primer presidente de los Estados Unidos?%George Washington%Abraham Lincoln%Thomas Jefferson%John Adams
-¿Qué país es famoso por el Monte Fuji?%Japón%Corea del Sur%Tailandia%China
-¿Qué tipo de animal es un pingüino?%Ave%Mamífero%Reptil%Pez
-¿Cuál es el continente con más países?%África%Asia%Europa%América
-¿Qué gas se usa en los globos aerostáticos?%Helio%Hidrógeno%Oxígeno%Nitrógeno
-¿Cuál es el océano más pequeño?%Océano Ártico%Océano Índico%Océano Atlántico%Océano Pacífico
-¿Cuál es el símbolo químico del agua?%H2O%CO2%O2%NaCl
+¿Qué tipo de animal es un delfín?%Mamífero%Pez%Anfibio%Reptil%
+¿Cuál es el país más grande del mundo por superficie?%Rusia%Canadá%China%Estados Unidos%
+¿Quién fue el autor de "Don Quijote de la Mancha"?%Miguel de Cervantes%Federico García Lorca%Gustavo Adolfo Bécquer%Jorge Luis Borges%
+¿Cuál es el metal más ligero?%Litio%Plata%Aluminio%Oro%
+¿Cuál es el sistema operativo más utilizado en el mundo?%Windows%macOS%Linux%Android%
+¿Qué continente es también un país?%Australia%Antártida%África%Europa%
+¿Quién descubrió la penicilina?%Alexander Fleming%Marie Curie%Louis Pasteur%Isaac Newton%
+¿Cuántos lados tiene un hexágono?%Seis%Cinco%Siete%Ocho%
+¿En qué año comenzó la Segunda Guerra Mundial?%1939%1914%1945%1929%
+¿Quién pintó "La Última Cena"?%Leonardo da Vinci%Michelangelo%Rafael%Rembrandt%
+¿Cuál es el país con más habitantes del mundo?%China%India%Estados Unidos%Indonesia%
+¿En qué ciudad se encuentra la Torre Eiffel?%París%Londres%Roma%Berlín%
+¿Qué gas es esencial para la respiración humana?%Oxígeno%Nitrógeno%Dióxido de carbono%Hidrógeno%
+¿Cuál es el nombre del satélite natural de la Tierra?%Luna%Fobos%Deimos%Io%
+¿Quién es el autor de la teoría de la relatividad?%Albert Einstein%Isaac Newton%Galileo Galilei%Nikola Tesla%
+¿Cuál es la capital de Argentina?%Buenos Aires%Santiago%Lima%Montevideo%
+¿Qué animal es conocido como el "rey de la selva"?%León%Tigre%Elefante%Jirafa%
+¿En qué país se originó el tango?%Argentina%Brasil%España%México%
+¿Qué planeta es conocido como el planeta rojo?%Marte%Venus%Mercurio%Júpiter%
+¿Quién escribió "Romeo y Julieta"?%William Shakespeare%Charles Dickens%Homer%J.R.R. Tolkien%
+¿Cuál es el elemento más abundante en el universo?%Hidrógeno%Oxígeno%Helio%Carbono%
+¿Cuál es la ciudad más poblada del mundo?%Tokio%Nueva York%Pekín%Londres%
+¿Cuál es la distancia aproximada entre la Tierra y el Sol?%150 millones de kilómetros%300 millones de kilómetros%50 millones de kilómetros%1 millón de kilómetros%
+¿En qué año llegó el hombre a la Luna?%1969%1955%1975%1980%
+¿Quién es el dios del trueno en la mitología nórdica?%Thor%Zeus%Ares%Odin%
+¿Qué país es famoso por la Torre de Pisa?%Italia%Francia%España%Grecia%
+¿Qué instrumento musical tiene teclas blancas y negras?%Piano%Guitarra%Violin%Batería%
+¿Cuál es el océano que separa América de Europa?%Atlántico%Pacífico%Índico%Ártico%
+¿Qué país tiene el himno nacional "La Marsellesa"?%Francia%Italia%España%Portugal%
+¿En qué continente se encuentra Brasil?%América del Sur%América del Norte%Europa%África%
+¿Cuál es el metal más abundante en la Tierra?%Aluminio%Hierro%Cobre%Plata%
+¿Qué planeta tiene un sistema de anillos?%Saturno%Marte%Venus%Mercurio%
+¿Cuál es el principal gas en la atmósfera de Marte?%Dióxido de carbono%Oxígeno%Nitrógeno%Helio%
+¿En qué año fue derribado el Muro de Berlín?%1989%1979%1999%1969%
+¿Quién escribió "La Odisea"?%Homero%Sófocles%Virgilio%Eurípides%
+¿Cuál es el símbolo químico del oro?%Au%Ag%Fe%Pb%
+¿Qué deporte practicaba Michael Jordan?%Baloncesto%Fútbol%Béisbol%Tenis%
+¿Qué órgano del cuerpo humano filtra la sangre?%Riñones%Pulmones%Estómago%Corazón%
+¿Cuál es el país más pequeño del mundo?%Ciudad del Vaticano%Mónaco%San Marino%Malta%
+¿Qué instrumento mide los terremotos?%Sismógrafo%Barómetro%Termómetro%Altímetro%
+¿Quién es el padre de la computación moderna?%Alan Turing%Charles Babbage%Steve Jobs%Bill Gates%
+¿En qué país se encuentra la Gran Muralla?%China%Japón%Corea del Sur%India%
+¿Qué vitamina es producida por el cuerpo al exponerse al sol?%Vitamina D%Vitamina C%Vitamina A%Vitamina B12%
+¿Quién fue el primer presidente de los Estados Unidos?%George Washington%Abraham Lincoln%Thomas Jefferson%John Adams%
+¿Qué país es famoso por el Monte Fuji?%Japón%Corea del Sur%Tailandia%China%
+¿Qué tipo de animal es un pingüino?%Ave%Mamífero%Reptil%Pez%
+¿Cuál es el continente con más países?%África%Asia%Europa%América%
+¿Qué gas se usa en los globos aerostáticos?%Helio%Hidrógeno%Oxígeno%Nitrógeno%
+¿Cuál es el océano más pequeño?%Océano Ártico%Océano Índico%Océano Atlántico%Océano Pacífico%
+¿Cuál es el símbolo químico del agua?%H2O%CO2%O2%NaCl%
