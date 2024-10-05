@@ -2,9 +2,34 @@ import numpy as np
 from os import system
 import time
 
+class BoatUnit:
+    def __init__(self, boatlen : int) -> None:
+        self.boatlen = boatlen
+        self.boatstring = "🟫"*boatlen
+
+    def coords(self, pos, orient:str):
+        coord = np.empty(self.boatlen, dtype=object)
+        coord[0] = pos
+        r, c = pos
+        l = self.boatlen
+        for i in range(1,l):
+            if orient == "d":
+                coord[i] = np.array([r,c+i]) # R
+            elif orient == "s":
+                coord[i] = np.array([r+i,c]) # D
+            elif orient == "a":
+                coord[i] = np.array([r,c-i]) # L
+            elif orient == "w":
+                coord[i] = np.array([r-i,c]) # U
+        return coord
+        
+    
+    def string(self):
+        return self.boatstring
+
+
 class Boats:
     def __init__(self) -> None:
-        self.sea = np.full((10,10), "🟦")
         self.menu_text = '''
 
          .-. .-..-. .-..-. .-. ,'|"\   ,-.,---.    ,-.      .--.    ,---.,-.    .---.  _______  .--.           
@@ -16,57 +41,79 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         (__)          (__)                    (__) (_)             (__)  (_)   (_)                             
         '''
 
-        self.boat_options = [["Portaaviones", "Acorazado", "Submarino", "Destructor", "Patrullero"],
-                             ["🟫🟫🟫🟫🟫", "🟫🟫🟫🟫", "🟫🟫🟫",   "🟫🟫🟫",    "🟫🟫"]]
+        self.sea = np.full((10,10), "🟦")
+        self.boat_options = ["Portaaviones", "Acorazado", "Submarino", "Destructor", "Patrullero"]
+        self.boat_lens = [5,4,3,3,2]                    
+        self.water_marker = "💧"
+        self.hit_marker = "🔥"
+        self.sunk_marker = "❌"
+        self.boat_marker = ["⬛","🟫","🟪","🟩","🟨"]
+        self.thrown_markers = [self.water_marker, self.hit_marker, self.sunk_marker]
+    def check_int(self, mensaje):
+            while True:
+                checking = input(mensaje)  
+                try:
+                    checking = int(checking)
+                    return checking  
+                except ValueError:
+                    print("Error: eso no es un número válido. Intenta nuevamente.") 
 
-    def get_torpedo(self, x, y, board):
-        board[x][y] = "x"
+    def check_positions(self, check_pos, board):
+        bool_array = board == "🟦"
+        for pos in check_pos:
+            i, j = pos  
+            if not bool_array[i, j]:  
+                return False  
+        return True  
 
-    def place_boat(self, boatid, orient, board, pos):
-        c, r = pos.split(",")
-        c = int(c)
-        r = int(r)
-        l = len(boatid)
 
-        if orient == "d":
-            board[r,c:c+l] = "🟫" # HR
-        elif orient == "s":
-            board[r:c+l,c] = "🟫" # VD
-        elif orient == "a":
-            board[r,c-(l-1):c+1] = "🟫" # HL
-        elif orient == "w":
-            board[r-(l-1):r+1,c] = "🟫" # VU
-        ## Diccionario (?)
-        return board
-
-    def menu_colocar(self, player_sea, turn):
+            
+    def get_torpedo_user(self, opponent_sea):
+        non_hit_mask = opponent_sea == "🟦"
+        while True:
+            torp_pos_str = input("Dónde quieres disparar?")
+            torp_pos = np.array(torp_pos_str.split(","))
+            allowed = non_hit_mask[torp_pos]
+            if allowed:
+                break
+            else:
+                continue
+        return torp_pos
+    
+    def get_torpedo_pc(self, opponent_sea):
+        pass
+        
+    def titlescreen(self):
         _ = system("cls")
         print(self.menu_text)
-        self.welcome()
-        for i in range(len(player_sea)):
-            if turn == 0:
-                time.sleep(0.3)
-            print("".join(player_sea[i]))
 
-        for y in range(len(self.boat_options[0])):
-            time.sleep(0.15)
-            print(f'{self.boat_options[0][y]}: {self.boat_options[1][y]}')
+    def colocar(self, player_sea):
+        for i in range(5):
+            if i == 0:
+                self.welcome()
+                for j in range(len(player_sea)):
+                    time.sleep(0.3)
+                    print("".join(player_sea[j]))
+            while True:
+                pos_string = input(f"Coordenadas para el {self.boat_options[i]} (Longitud: {self.boat_lens[i]}):\n")
+                pos = np.array(list(map(int, pos_string.split(","))))
+                dir = input("Dirección? (wasd)").lower()
+                pos_chain = BoatUnit(self.boat_lens[i]).coords(pos, orient = dir)
+                if self.check_positions(pos_chain, player_sea):
+                    break
+                else:
+                    continue
+                    
+        
+            for pos_coord in pos_chain:
+                player_sea[pos_coord[0], pos_coord[1]] = self.boat_marker[i]
+            _ = system("cls")
+            print(self.menu_text)
+            for k in range(len(player_sea)):
+                print("".join(player_sea[k]))
 
-    # def current_sea(self, player_sea, turn):
-    #     _ = system("cls")
-    #     print(self.menu_text)
-    #     if turn == 0:
-    #         self.welcome()
-    #     for i in range(len(player_sea)):
-    #         if turn == 0:
-    #             time.sleep(0.3)
-    #         print("".join(player_sea[i]))
-    #     if turn == 0:
-    #         print("\n")
-    #         for y in range(len(self.boat_options[0])):
-    #             time.sleep(0.15)
-    #             print(f'{self.boat_options[0][y]}: {self.boat_options[1][y]}')
 
+    
     def welcome(self):
         print("Bienvenido a Hundir la flota")
 
@@ -75,21 +122,10 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
             print(f'{len(boat)}')
 
     def jugar(self):
-        # _ = system("cls")
-        # print(self.menu_text)
+        self.titlescreen()
         user_sea = self.sea
         pc_sea = self.sea
-        user_boats = self.boat_options[1]
-        pc_boats = self.boat_options[1]
         turno = 0
-        for i in range(1,5):
-            self.menu_colocar(user_sea, turn = turno)
-            turno += 1
-            id_barco = user_boats[int(input("Qué barco quieres colocar?"))-1]
-            dir = input("Dirección? (wasd)").lower()
-            user_choice_pos = input("Posición?")
-            user_sea = self.place_boat(id_barco, dir, user_sea, user_choice_pos)
-            self.menu_colocar(user_sea, turn = turno)
-
+        self.colocar(user_sea)
 
 Boats().jugar()
