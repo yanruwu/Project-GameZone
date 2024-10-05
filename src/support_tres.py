@@ -21,7 +21,7 @@ class Tictactoe:
         self.markers = ["X", "O"]
         self.winning_combos = [(0,1,2), (3,4,5), (6,7,8),
                                (0,3,6), (1,4,7), (2,5,8),
-                               (0,4,8), (2,4,6)]
+                               (0,4,8), (2,4,6)] ## Cambiar a función para check independientemente del size del tablero
 
     def welcome(self):
         time.sleep(0.5)
@@ -59,7 +59,6 @@ class Tictactoe:
         for combo in self.winning_combos:
             if all(self.board[pos] == marker for pos in combo):
                 return combo
-        return None
 
     def jugar(self):
         _ = system("cls")
@@ -70,14 +69,12 @@ class Tictactoe:
         time.sleep(1)
         play_again = 1
         while play_again == 1:
-            self.board = [' '] * 9
+            self.board = [' '] * 9 ## Crear local
             print("1: Contra PC  2: Contra un amigo  0: Salir")
             while True:
                 try:
                     gamemode = int(input("Elige modo de juego:: "))
                     if gamemode in [1,2]:
-                        break
-                    elif gamemode == 0:
                         break
                     else:
                         continue

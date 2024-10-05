@@ -137,7 +137,7 @@ $$ |  $$ |$$ |  $$ |$$ |\$$$ |$$ |  $$ |$$\   $$ |  $$ |   $$ |
                     print("Ronda final")
                     time.sleep(0.5)
                     print("Puntuación DOBLE!\n")
-                    puntos_add += 1
+                    puntos_add *= 2
                 else:
                     print(f"Ronda {i}\n")
                 time.sleep(1)
@@ -149,7 +149,7 @@ $$ |  $$ |$$ |  $$ |$$ |\$$$ |$$ |  $$ |$$\   $$ |  $$ |   $$ |
                     try:
                         user_choice = int(input("Escoja una opción (1-4): "))
                         if int(user_choice) == 0:
-                            continue
+                            continue ## Mirar esto
                         break
                     except:
                         continue
