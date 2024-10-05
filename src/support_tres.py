@@ -128,9 +128,11 @@ class Tictactoe:
             while True:
                 response = input("Quieres jugar de nuevo? (y/n)")
                 if response.lower() == "y":
+                    _ = system("cls")
                     break
                 elif response.lower() == "n":
                     play_again = 0
+                    _ = system("cls")
                     break
                 else: 
                     continue

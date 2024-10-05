@@ -29,6 +29,7 @@ class Trivia:
         """
         pattern_q = r"(.*?)%(.*?)%(.*?)%(.*?)%(.*?)%"
         self.q_set = re.findall(pattern = pattern_q, string = complete_string)
+        self.puntos_porpregunta = 1
         self.menu_text = '''
           _____   _____   ______  _____  _    _  _   _  _______         _____    ____    _____        
          |  __ \ |  __ \ |  ____|/ ____|| |  | || \ | ||__   __| /\    |  __ \  / __ \  / ____|       
@@ -115,6 +116,7 @@ $$ |  $$ |$$ |  $$ |$$ |\$$$ |$$ |  $$ |$$\   $$ |  $$ |   $$ |
         play_again = "y"
         while play_again.lower() == "y":
             points = 0
+            puntos_add = self.puntos_porpregunta
             while True:
                 try:
                     rondas = int(input("Cuántas rondas quieres jugar? "))
@@ -128,11 +130,20 @@ $$ |  $$ |$$ |  $$ |$$ |\$$$ |$$ |  $$ |$$\   $$ |  $$ |   $$ |
                 q_set_round = self.generate()
                 q_set_options = q_set_round[1::]
                 q_set_options_rand = rand.sample(q_set_options, k=4)
+                _ = system("cls")
+                print(self.menu_text)
+                time.sleep(1)
                 if i == rondas:
                     print("Ronda final")
+                    time.sleep(0.5)
+                    print("Puntuación DOBLE!\n")
+                    puntos_add += 1
                 else:
-                    print(f"Ronda {i}")
+                    print(f"Ronda {i}\n")
+                time.sleep(1)
                 print(q_set_round[0])
+                time.sleep(0.5)
+                ## Nota: Se podría aplicar un for loop para que las preguntas se printeen una a una.
                 print(f'1: {q_set_options_rand[0]} 2: {q_set_options_rand[1]} 3: {q_set_options_rand[2]} 4: {q_set_options_rand[3]}')
                 while True:
                     try:
@@ -145,22 +156,23 @@ $$ |  $$ |$$ |  $$ |$$ |\$$$ |$$ |  $$ |$$\   $$ |  $$ |   $$ |
 
                 if q_set_options_rand[user_choice-1] == q_set_options[0]:
                     print("CORRECTO!!")
-                    points += 1
+                    points += puntos_add
                 else:
                     print("INCORRECTO!")
                     time.sleep(1)
-                    print(f"La respuesta correcta era: {q_set_options[0]}")
+                    print(f"\nLa respuesta correcta era: {q_set_options[0]}")
+                    time.sleep(1) ## Para dar más tiempo para leer la respuesta correcta
                 self.q_set.pop(self.q_set.index(tuple(q_set_round)))
                 time.sleep(1)
                 if i == rondas:
                     time.sleep(1)
                     break
-                print(f"Puntuación actual: {points}")
+                print(f"Puntuación actual: {points}\n")
                 time.sleep(1)
                 i += 1
             print(f'Puntuación final: {points}')
             time.sleep(1)
-            if points == rondas:
+            if points >= rondas:
                 print(self.victoria)
             else:
                 print(self.perdida)

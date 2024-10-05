@@ -22,8 +22,8 @@ class juegos:
         self.lista_juegos = [Trivia(trivia_text), Tictactoe(), 0, 0, 0]
     
     def jugar(self):
-        _ = system("cls")
         while True:
+            _ = system("cls")
             print(menu_msg)
             print("1: Preguntados")
             print("2: Tres en raya")
