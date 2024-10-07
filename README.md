@@ -4,14 +4,6 @@
 
 Este repositorio contiene una colección de juegos clásicos implementados en Python. Los juegos incluidos son:
 
-- **Preguntados** ❓: Un juego de preguntas y respuestas que desafía el conocimiento del jugador.
-- **Tres en Raya** ❎: Un juego de estrategia para dos jugadores en un tablero 3x3.
-- **Ahorcado** ⛓️: Un juego de adivinanza de palabras en el que los jugadores intentan descubrir una palabra oculta.
-- **Piedra-Papel-Tijera** ✊✋✌️: Un clásico juego de manos.
-- **Hundir la Flota** 🚢: Un juego de estrategia donde los jugadores intentan hundir los barcos del oponente.
-
-## Características
-
 ### Preguntados ❓
 - Preguntas aleatorias seleccionadas de un archivo de texto.
 - Sistema de puntuación para rastrear el rendimiento del jugador.
@@ -41,7 +33,14 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 ## Tecnologías Utilizadas 💻
 
 - Python 3.11
-- Librerías (NumPy, Random, Time, ...)
+- Librerías (NumPy, Random, Time, OS, TermColor)
+
+## Estructura del proyecto 📂
+
+        ├── main.py              # Ejecución principal
+        ├── .txt                 # Archivos de texto con recursos para los juegos de texto
+        ├── src/                 # Scripts de todos los juegos y recursos
+        ├── README.md            # Descripción del proyecto
 
 ## Instalación 🛠️
 
@@ -122,3 +121,6 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 - **Interfaz gráfica**: Desarrollar una interfaz gráfica para mejorar la experiencia del usuario.
 - **Niveles de dificultad**: Añadir diferentes niveles de dificultad para que los jugadores puedan elegir.
 - **Carga interactiva**: Añadir una pequeña animación para simular el pensamiento de la máquina.
+
+## Conclusiones ✍️
+En este proyecto se han programados varios juegos clásicos con métodos aprendidos en python, de tal forma que ha servido como una puesta en práctica de los conocimientos adquiridos, además de una manera de visualizar cómo funciona nuestro proceso de pensamiento, ya que este tipo de proyectos tiene infinidad de formas de realizarse. Además de que cada uno de los juegos es diferente del anterior, por lo que uno ha de buscar enfoques diferentes para cada uno de ellos. En definitiva un buen proyecto con mucho margen para implementarle mejoras y detalles.
