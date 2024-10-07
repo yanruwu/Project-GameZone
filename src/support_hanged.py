@@ -12,6 +12,10 @@ with open("hangman_text.txt", encoding = "UTF-8") as archivo:
 
 
 class Hanged:
+    """
+    Clase que representa el juego del Ahorcado.
+    Contiene los textos de menú, dibujos del ahorcado, y mensajes de victoria y derrota.
+    """
     def __init__(self) -> None:
         self.menu_text = r'''
  ▄▄▄       ██░ ██  ▒█████   ██▀███   ▄████▄   ▄▄▄      ▓█████▄  ▒█████  
@@ -100,6 +104,13 @@ U|  _  |u / ___ \  u___) |       | |_| |  / ___ \ U| |\  |u  / ___ \ U| |_| |\.-
 '''
 
     def print_man(self, lives, guess_string):
+        """
+        Muestra el estado del juego, incluyendo el ahorcado y las vidas restantes.
+        
+        Args:
+            lives (int): Número de vidas restantes.
+            guess_string (str): Representación actual de la palabra adivinada.
+        """
         time.sleep(0.2)
         _ = system("cls")
         if lives == 0:
@@ -116,6 +127,19 @@ U|  _  |u / ___ \  u___) |       | |_| |  / ___ \ U| |\  |u  / ___ \ U| |_| |\.-
         print("         \n"+guess_string)
     
     def guess_board(self, correct_word, guess_list, word_pool, choice):
+        """
+        Verifica si la letra elegida está en la palabra correcta y actualiza
+        la lista de letras adivinadas.
+
+        Args:
+            correct_word (list): La palabra correcta en forma de lista de caracteres.
+            guess_list (list): Lista de caracteres adivinados.
+            word_pool (list): Lista de letras disponibles para adivinar.
+            choice (str): La letra elegida por el jugador.
+
+        Returns:
+            bool: True si la letra está en la palabra, False si no.
+        """
         if choice not in word_pool:
             return None
         else:
@@ -131,6 +155,16 @@ U|  _  |u / ___ \  u___) |       | |_| |  / ___ \ U| |\  |u  / ___ \ U| |_| |\.-
             return False
         
     def win_check(self, correct_word, guess_list):
+        """
+        Verifica si el jugador ha ganado, es decir, si ha adivinado todas las letras de la palabra.
+
+        Args:
+            correct_word (list): La palabra correcta en forma de lista de caracteres.
+            guess_list (list): Lista de caracteres adivinados.
+
+        Returns:
+            bool: True si el jugador ha ganado, False si no.
+        """
 
         if correct_word == guess_list:
             return True
@@ -139,6 +173,10 @@ U|  _  |u / ___ \  u___) |       | |_| |  / ___ \ U| |\  |u  / ___ \ U| |_| |\.-
 
 
     def jugar(self):
+        """
+        Inicia el ciclo del juego, gestiona el flujo del juego, incluyendo
+        la selección de idioma, adivinanza de letras y condiciones de victoria/derrota.
+        """
         _ = system("cls")
         print(self.menu_text)
         play_again = True

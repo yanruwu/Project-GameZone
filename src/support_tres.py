@@ -5,10 +5,17 @@ from os import system
 from termcolor import colored
 
 class Tictactoe:
+    """
+    Clase para gestionar el juego de Tres en Raya (Tic-Tac-Toe).
+    """
+
     def __init__(self):
+        """
+        Inicializa el juego con un tablero vacío, un menú de bienvenida, 
+        marcadores y combinaciones ganadoras.
+        """
         self.board = [' '] * 9
         self.menu_text = '''
-
        .___________..______       _______      _______.    _______ .__   __.    .______           ___   ____    ____  ___            
        |           ||   _  \     |   ____|    /       |   |   ____||  \ |  |    |   _  \         /   \  \   \  /   / /   \           
  ______`---|  |----`|  |_)  |    |  |__      |   (----`   |  |__   |   \|  |    |  |_)  |       /  ^  \  \   \/   / /  ^  \   ______ 
@@ -24,11 +31,17 @@ class Tictactoe:
                                (0,4,8), (2,4,6)] ## Cambiar a función para check independientemente del size del tablero
 
     def welcome(self):
+        """
+        Muestra un mensaje de bienvenida y espera un momento antes de continuar.
+        """
         time.sleep(0.5)
         print("Bienvenido al tres en raya!")
         time.sleep(1)
 
     def print_board(self):
+        """
+        Limpia la pantalla y muestra el estado actual del tablero de juego.
+        """
         _ = system("cls")
         print(self.menu_text)
         print(f'''
@@ -42,7 +55,18 @@ class Tictactoe:
         {self.board[6]}  |  {self.board[7]}  |  {self.board[8]}  
            |     |     
 ''')
+
     def get_move(self, playerid, marker):
+        """
+        Permite al jugador seleccionar una casilla válida en el tablero.
+
+        Args:
+            playerid (str): Identificador del jugador (Jugador 1 o Jugador 2).
+            marker (str): El marcador del jugador actual ('X' o 'O').
+
+        El método solicita la entrada del jugador hasta que se elige una
+        casilla válida, y luego actualiza el tablero.
+        """
         while True:
             try:
                 pos = int(input(f'Selecciona casilla, {playerid}\n')) - 1
@@ -56,11 +80,26 @@ class Tictactoe:
                 print("Valor no válido")
     
     def check_winner(self, marker):
+        """
+        Verifica si el marcador actual ha ganado el juego.
+
+        Args:
+            marker (str): El marcador a verificar ('X' o 'O').
+
+        Returns:
+            tuple or None: Si el jugador ha ganado, devuelve la combinación ganadora;
+            de lo contrario, devuelve None.
+        """
         for combo in self.winning_combos:
             if all(self.board[pos] == marker for pos in combo):
                 return combo
 
     def jugar(self):
+        """
+        Inicia el flujo del juego de Tres en Raya. Permite al jugador seleccionar
+        entre jugar contra la computadora o contra otro jugador, y gestiona el 
+        flujo del juego hasta que se determina un ganador o se agotan los turnos.
+        """
         _ = system("cls")
         print(self.menu_text)
 
@@ -74,7 +113,7 @@ class Tictactoe:
             while True:
                 try:
                     gamemode = int(input("Elige modo de juego:: "))
-                    if gamemode in [1,2]:
+                    if gamemode in [1, 2]:
                         break
                     else:
                         continue
@@ -91,9 +130,8 @@ class Tictactoe:
             turno = 0
             for i in range(9):
                 self.print_board()
-                if turno%2 == 0:
+                if turno % 2 == 0:
                     self.get_move("Jugador 1", user_marker)
-                    print(self.check_winner(user_marker))
                     if self.check_winner(user_marker):
                         winner_combo = self.check_winner(user_marker)
                         for pos in winner_combo:
@@ -109,13 +147,13 @@ class Tictactoe:
                             for pos in winner_combo:
                                 self.board[pos] = "⭕"
                             self.print_board()
-                            print("Gana el jugador 2!" if gamemode == 2 else "Gana el PC!")
+                            print("Gana el jugador 2!")
                             break
                     else:
                         while True:
                             pospc = rand.choice([x for x in range(9)])
                             if self.board[pospc] == " ":
-                                time.sleep(rand.choice([0.5,0.75,1,1.25]))
+                                time.sleep(rand.choice([0.5, 0.75, 1, 1.25]))
                                 self.board[pospc] = friend_marker
                                 break
                             else:
@@ -123,7 +161,7 @@ class Tictactoe:
                                 
                 turno += 1
             while True:
-                response = input("Quieres jugar de nuevo? (y/n)")
+                response = input("¿Quieres jugar de nuevo? (y/n)")
                 if response.lower() == "y":
                     _ = system("cls")
                     break

@@ -4,11 +4,35 @@ import time
 import random as rand
 
 class BoatUnit:
+
     def __init__(self, boatlen : int) -> None:
+        """
+        Inicializa una unidad de barco.
+
+        Parámetros:
+        ----------
+        boatlen : int
+            Longitud del barco.
+        """
         self.boatlen = boatlen
         self.boatstring = "🟫"*boatlen
 
     def coords(self, pos, orient:str):
+        """
+        Calcula las coordenadas del barco en función de la posición inicial y la orientación.
+
+        Parámetros:
+        -----------
+        pos : array_like
+            Posición inicial del barco en el tablero.
+        orient : str
+            Orientación del barco ('d' para abajo, 's' para arriba, 'a' para izquierda, 'w' para derecha).
+
+        Retorna:
+        --------
+        numpy.ndarray
+            Un arreglo con las coordenadas ocupadas por el barco.
+        """
         coord = np.empty(self.boatlen, dtype=object)
         coord[0] = pos
         r, c = pos
@@ -25,37 +49,11 @@ class BoatUnit:
         return coord
         
     
-    def string(self):
-        return self.boatstring
-
 
 class Boats:
     """
     Clase que representa un juego de Hundir la flota, con funcionalidad para colocar barcos,
     disparar torpedos y gestionar el flujo del juego.
-    
-    Atributos:
-    ----------
-    menu_text : str
-        Texto ASCII para la pantalla de inicio.
-    sea : numpy.ndarray
-        Matriz que representa el tablero del mar para el jugador.
-    numbers_row : str
-        Cadena que contiene los números de las columnas como emojis para el tablero.
-    boat_options : list
-        Lista con los nombres de los diferentes tipos de barcos.
-    boat_lens : list
-        Lista con las longitudes de cada tipo de barco.
-    water_marker : str
-        Símbolo que representa un disparo fallido en el tablero.
-    hit_marker : str
-        Símbolo que representa un disparo acertado en el tablero.
-    sunk_marker : str
-        Símbolo que representa un barco hundido.
-    boat_marker : list
-        Lista de símbolos que representan los diferentes barcos en el tablero.
-    thrown_markers : list
-        Lista de símbolos que indican disparos fallidos, acertados y hundidos en el tablero.
     """
 
     def __init__(self) -> None:
@@ -99,13 +97,11 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         -----------
         mensaje : str
             El mensaje que se mostrará al usuario para pedir la entrada.
-        is_placemenu : bool, opcional
-            Indica si el número ingresado es para el menú de colocación. Por defecto es False.
 
         Retorna:
         --------
         int
-            El número entero ingresado por el usuario.
+            El número entero ingresado por el usuario, o None si se dejó en blanco.
         """
         while True:
             checking = input(mensaje)
@@ -143,10 +139,40 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         return True  
     
     def check_hitmiss(self, shot_pos, opponent_sea):
+        """
+        Verifica si un disparo acertó o falló en el tablero del oponente.
+
+        Parámetros:
+        -----------
+        shot_pos : numpy.ndarray
+            La posición donde se realizó el disparo.
+        opponent_sea : numpy.ndarray
+            El tablero del oponente.
+
+        Retorna:
+        --------
+        bool
+            Retorna True si el disparo acertó, False en caso contrario.
+        """
         hit = opponent_sea[shot_pos[0],shot_pos[1]] != "🟦"
         return hit
     
     def check_sunk(self, total_shots, boat_pos):
+        """
+        Verifica si un barco ha sido hundido basándose en los disparos realizados.
+
+        Parámetros:
+        -----------
+        total_shots : list
+            Lista de posiciones de disparos realizados.
+        boat_pos : numpy.ndarray
+            Arreglo con las posiciones ocupadas por el barco.
+
+        Retorna:
+        --------
+        numpy.ndarray
+            Arreglo booleano que indica si cada barco ha sido hundido.
+        """
         shots_copy = [tuple(shot) for shot in total_shots]  
         boat_copy = np.array(boat_pos.copy(), dtype=object)
         # print(shots_copy)
@@ -154,23 +180,6 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         result = np.array([all(tuple(item) in shots_copy for item in sub_array) for sub_array in boat_copy])
         # print("Result sunk;", result)
         return result
-        # total_copy = total_shots.copy()
-        # boat_copy = boat_pos.copy()
-        # print("Boat_copy:", boat_pos)
-        # for i in range(len(boat_copy)):
-        #     for pos in total_copy:
-        #         # print(pos)
-        #         # print(boat_copy[i])
-        #         if all(np.array_equal(arr, np.array(pos)) for arr in boat_copy[i]):
-        #             boat_copy = np.delete(boat_copy, i, axis = 0)
-        #     if len(boat_copy[i]) == 0:
-        #         boat_copy[i] = True
-        #     else:
-        #         boat_copy[i] = False
-        # if all(boat_copy):
-        #     return 
-        # else:
-        #     return boat_copy
 
 
     def get_torpedo_user(self, opponent_sea, op_sea_4user):
@@ -181,11 +190,13 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         -----------
         opponent_sea : numpy.ndarray
             El tablero del oponente.
+        op_sea_4user : numpy.ndarray
+            El tablero que se mostrará al jugador.
 
         Retorna:
         --------
-        numpy.ndarray
-            La posición ingresada por el usuario para disparar el torpedo.
+        list
+            Lista que contiene la fila y columna del disparo realizado.
         """
         while True:
             self.print_board(op_sea_4user)
@@ -222,13 +233,15 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
 
     def get_torpedo_pc(self, user_sea, user_sea_4pc):
         """
-        Método vacío para la lógica de disparo de la computadora. 
+        Método para la lógica de disparo de la computadora. 
         (Pendiente de implementación)
-        
+
         Parámetros:
         -----------
-        opponent_sea : numpy.ndarray
-            El tablero del oponente.
+        user_sea : numpy.ndarray
+            El tablero del jugador.
+        user_sea_4pc : numpy.ndarray
+            El tablero de la computadora para mostrar los resultados.
         """
         while True:
             r = rand.randint(0, 9)
@@ -263,6 +276,14 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         print(self.menu_text)
 
     def print_board(self, player_board):
+        """
+        Imprime el tablero del jugador en la consola.
+
+        Parámetros:
+        -----------
+        player_board : numpy.ndarray
+            El tablero del jugador que se va a imprimir.
+        """
         self.titlescreen()
         print(self.numbers_row)
         for k in range(len(player_board)):
@@ -276,6 +297,12 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         -----------
         player_sea : numpy.ndarray
             El tablero del jugador donde se colocarán los barcos.
+
+        Retorna:
+        --------
+        list | None
+            Lista con las posiciones de los barcos colocados si se colocan exitosamente, 
+            None si se cancela la colocación.
         """
         exit = False
         i = 0
@@ -332,6 +359,11 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         -----------
         machine_sea : numpy.ndarray
             El tablero de la máquina donde se colocarán los barcos.
+
+        Retorna:
+        --------
+        list
+            Lista con las posiciones de los barcos colocados en el tablero de la máquina.
         """
         all_pos = []
         for i in range(len(self.boat_options)):

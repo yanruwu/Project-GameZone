@@ -28,7 +28,7 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 - Mensajes informativos sobre el progreso del jugador.
 
 ### Piedra-Papel-Tijera ✊✋✌️
-- Juego rápido y fácil para dos jugadores.
+- Juego rápido y fácil con opción a modo ampliado.
 - Resultados mostrados después de cada ronda.
 - Interacción sencilla a través de la consola.
 
@@ -79,10 +79,11 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 
 ### Piedra-Papel-Tijera ✊✋✌️
 
-1. Al iniciar el juego, se le pedirá a cada jugador que elija su opción (piedra, papel o tijera).
-2. El resultado se determina según las reglas del juego.
-3. Se mostrará el resultado de cada ronda.
-4. El juego puede repetirse para múltiples rondas.
+1. Al iniciar el juego, se le pedirá a cada jugador que elija un modo de juego.
+2. En cada ronda, se le pedirá al jugador que elija su opción (piedra, papel o tijera para el clásico).
+3. El resultado se determina según las reglas del juego.
+4. Se mostrará el resultado de cada ronda.
+5. El juego puede repetirse para múltiples rondas.
 
 ### Hundir la Flota 🚢
 
@@ -112,11 +113,12 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 - **Temporizador**: Añadir un temporizador para aumentar la presión y la emoción del juego.
 
 ### Piedra-Papel-Tijera ✊✋✌️
-- **Variantes del juego**: Incluir variantes del juego, como "Piedra-Papel-Tijera-Lagarto-Spock".
-- **Estadísticas de juego**: Llevar un registro de las victorias y derrotas del jugador para mostrar el rendimiento.
-- **Torneos**: Implementar un sistema de torneos para que los jugadores puedan competir entre sí.
+- **Modo dos jugadores**: Implementar de forma sencilla un modo de dos jugadores
+- **Diseño** Mejoras en la interfaz gráfica podrían elevar bastante la experiencia de juego.
+- **Máquina** Implementar una manera donde la máquina pueda aprender sobre tu forma de jugar y actuar en consecuencia (Añadir una base de datos por jugador u otro método de aprendizaje por experiencia).
 
 ### Hundir la Flota 🚢
 - **Mejorar la máquina**: Implementar un algoritmo capaz de disparar de forma eficiente (actualmente es aleatorio).
 - **Interfaz gráfica**: Desarrollar una interfaz gráfica para mejorar la experiencia del usuario.
 - **Niveles de dificultad**: Añadir diferentes niveles de dificultad para que los jugadores puedan elegir.
+- **Carga interactiva**: Añadir una pequeña animación para simular el pensamiento de la máquina.
