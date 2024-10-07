@@ -124,3 +124,6 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 
 ## Conclusiones ✍️
 En este proyecto se han programados varios juegos clásicos con métodos aprendidos en python, de tal forma que ha servido como una puesta en práctica de los conocimientos adquiridos, además de una manera de visualizar cómo funciona nuestro proceso de pensamiento, ya que este tipo de proyectos tiene infinidad de formas de realizarse. Además de que cada uno de los juegos es diferente del anterior, por lo que uno ha de buscar enfoques diferentes para cada uno de ellos. En definitiva un buen proyecto con mucho margen para implementarle mejoras y detalles.
+
+## 🤝 Contribuciones
+Las contribuciones son bienvenidas. Si deseas mejorar el proyecto, por favor abre un pull request o una issue.
