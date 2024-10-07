@@ -7,7 +7,7 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 - **Preguntados** ❓: Un juego de preguntas y respuestas que desafía el conocimiento del jugador.
 - **Tres en Raya** ❎: Un juego de estrategia para dos jugadores en un tablero 3x3.
 - **Ahorcado** ⛓️: Un juego de adivinanza de palabras en el que los jugadores intentan descubrir una palabra oculta.
-- **Piedra-Papel-Tijera** ✊✋✌️: Un clásico juego de manos para dos jugadores.
+- **Piedra-Papel-Tijera** ✊✋✌️: Un clásico juego de manos.
 - **Hundir la Flota** 🚢: Un juego de estrategia donde los jugadores intentan hundir los barcos del oponente.
 
 ## Características
@@ -45,10 +45,10 @@ Este repositorio contiene una colección de juegos clásicos implementados en Py
 
 ## Instalación 🛠️
 
-1. Asegúrate de tener Python 3.x instalado en tu sistema.
+1. Asegúrate de tener Python 3.11 instalado en tu sistema.
 2. Clona este repositorio o descarga el archivo del código.
 3. Navega al directorio del proyecto en tu terminal.
-4. Ejecuta el juego que desees iniciar con el siguiente comando:
+4. Ejecuta el juego con el siguiente comando:
 
    ```bash
    python main.py
