@@ -190,8 +190,7 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         while True:
             self.print_board(op_sea_4user)
             r = self.check_int(f"Fila de disparo:\n")
-            c = self.check_int(f"Columna de disparo:\n")
-            c += 1
+            c = self.check_int(f"Columna de disparo:\n") + 1
             shot_pos = np.array([[r,c]])
             if self.check_positions(shot_pos, op_sea_4user):
                 break
@@ -310,7 +309,7 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
             all_pos.append(pos_chain)
             i += 1
             self.print_board(player_sea)
-        return all_pos
+        return all_pos if not exit else None
 
     def welcome(self):
         """
@@ -358,72 +357,73 @@ ____.___ | `-' || | | ||   | | | | \ \ (_)| `-'/   | |    / /__\ \  | `-.| |   |
         """
         Inicia el ciclo principal del juego, mostrando el tablero y gestionando los turnos.
         """
-        self.titlescreen()
-        user_sea = np.copy(self.sea)
-        pc_sea = np.copy(self.sea)
-        pc_sea_4player = np.copy(self.sea)
-        user_sea_4pc = np.copy(self.sea)
-        turno = 0
-        user_boats = self.colocar(user_sea)
-        # boats_pc = self.boat_tester
-        boats_pc = self.machine_board_gen(pc_sea)
-        user_shots = []
-        pc_shots = []
-        while True:
-            if turno%2 == 0:
-                _ = system("cls")
-                print(self.menu_text)
-                print("\nTURNO DEL JUGADOR:\n")
-                time.sleep(1.5)
-                current_shot = self.get_torpedo_user(pc_sea,pc_sea_4player)
-                user_shots.append([current_shot[0], current_shot[1]-1])
-                # print("User shots:", user_shots)
-                sunk_conds = self.check_sunk(user_shots, boats_pc)
-            else:
-                _ = system("cls")
-                print(self.menu_text)
-                print("\nTURNO DEL PC:\n")
-                time.sleep(1.5)
-                pc_now_shot = self.get_torpedo_pc(user_sea, user_sea_4pc)
-                pc_shots.append([pc_now_shot[0], pc_now_shot[1]])
-                sunk_conds = self.check_sunk(pc_shots, user_boats)               
-            if all(sunk_conds):
-                self.titlescreen()
-                self.print_board(pc_sea_4player)
-                if turno%2 == 0:
-                    print("VICTORIA!!!")
-                else:
-                    print("has perdido...")
+        play_again = True
+        while play_again:
+            self.titlescreen()
+            user_sea = np.copy(self.sea)
+            pc_sea = np.copy(self.sea)
+            pc_sea_4player = np.copy(self.sea)
+            user_sea_4pc = np.copy(self.sea)
+            turno = 0
+            user_boats = self.colocar(user_sea)
+            if user_boats == None:
                 break
-            else:
-                # print("sunk conds", sunk_conds)
-                if any(sunk_conds):
-                    indices_true = np.where(sunk_conds)
-                    # print("algún indice true:", type(indices_true))
-                    for k in range(len(indices_true[0])):
-                        ind = indices_true[0][k]
-                        print(indices_true)
-                        pos_chain = boats_pc[ind]
-                        # print(pos_chain)
-                        if turno%2 == 0:
-                            for pos_coord in pos_chain:
-                                pc_sea_4player[pos_coord[0], pos_coord[1]] = self.sunk_marker
-                        else:
-                            for pos_coord in pos_chain:
-                                user_sea[pos_coord[0], pos_coord[1]] = self.sunk_marker
+            # boats_pc = self.boat_tester
+            boats_pc = self.machine_board_gen(pc_sea)
+            user_shots = []
+            pc_shots = []
+            win = False
+            while not win:
+                if turno%2 == 0:
+                    _ = system("cls")
+                    print(self.menu_text)
+                    print("\nTURNO DEL JUGADOR:\n")
+                    time.sleep(1.5)
+                    current_shot = self.get_torpedo_user(pc_sea,pc_sea_4player)
+                    user_shots.append([current_shot[0], current_shot[1]-1])
+                    # print("User shots:", user_shots)
+                    sunk_conds = self.check_sunk(user_shots, boats_pc)
+                else:
+                    _ = system("cls")
+                    print(self.menu_text)
+                    print("\nTURNO DEL PC:\n")
+                    time.sleep(1.5)
+                    pc_now_shot = self.get_torpedo_pc(user_sea, user_sea_4pc)
+                    pc_shots.append([pc_now_shot[0], pc_now_shot[1]])
+                    sunk_conds = self.check_sunk(pc_shots, user_boats)               
+                if all(sunk_conds):
                     self.titlescreen()
+                    self.print_board(pc_sea_4player)
                     if turno%2 == 0:
-                        self.print_board(pc_sea_4player)
-                        print(f"Hundidos 💣: {len(indices_true[0])}")
+                        print("VICTORIA!!!")
                     else:
-                        self.print_board(user_sea)
-            time.sleep(3)
-            turno += 1
-        # self.print_board(pc_sea)
-        # print(user_shots)
+                        print("has perdido...")
+                    win = True
+                    break
+                else:
+                    # print("sunk conds", sunk_conds)
+                    if any(sunk_conds):
+                        indices_true = np.where(sunk_conds)
+                        # print("algún indice true:", type(indices_true))
+                        for k in range(len(indices_true[0])):
+                            ind = indices_true[0][k]
+                            print(indices_true)
+                            pos_chain = boats_pc[ind]
+                            # print(pos_chain)
+                            if turno%2 == 0:
+                                for pos_coord in pos_chain:
+                                    pc_sea_4player[pos_coord[0], pos_coord[1]] = self.sunk_marker
+                            else:
+                                for pos_coord in pos_chain:
+                                    user_sea[pos_coord[0], pos_coord[1]] = self.sunk_marker
+                        self.titlescreen()
+                        if turno%2 == 0:
+                            self.print_board(pc_sea_4player)
+                            print(f"Hundidos 💣: {len(indices_true[0])}")
+                        else:
+                            self.print_board(user_sea)
+                time.sleep(3)
+                turno += 1
+            play_again = True if input("Quieres jugar de nuevo? (y/n)").lower == "y" else False
         
-
-
-
-
-Boats().jugar()
+# Boats().jugar()
